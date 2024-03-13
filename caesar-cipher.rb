@@ -2,23 +2,29 @@
 # step 2: add shift to all characters in this range -> should lead to overflow
 # step 3: loop back overflow with alphabet_size = 26  
 
+BIG_A_CODE = 65
+BIG_Z_CODE = 90
+SMALL_A_CODE = 97
+SMALL_Z_CODE = 122
+ALPAHBET_SIZE = 26
+
 
 def caesar_cipher( string_to_manipulate, cipher_shift )
     changed_string = ''
     puts string_to_manipulate
-    string_array = string_to_manipulate.bytes
+    string_array = string_to_manipulate.bytes   # create ASCII character code array
     # p string_array
-    string_array.each_with_index do |num, idx|
-        if ( ((num >= 97) and (num <= 122))  )
+    string_array.each_with_index do |char_code, idx|
+        if ( ((char_code >= SMALL_A_CODE) and (char_code <= SMALL_Z_CODE))  )
             string_array[idx] += cipher_shift
-            if ( (num >= 123 - cipher_shift) )
-                string_array[idx] -= 26
+            if ( (char_code >= SMALL_Z_CODE + 1 - cipher_shift) )
+                string_array[idx] -= ALPAHBET_SIZE
             end
         end
-        if ((num >= 65) and (num <= 90))
+        if ((char_code >= BIG_A_CODE) and (char_code <= BIG_Z_CODE))
             string_array[idx] += cipher_shift
-            if( num >= 91 - cipher_shift )
-                string_array[idx] -= 26
+            if( char_code >= BIG_Z_CODE + 1 - cipher_shift )
+                string_array[idx] -= ALPAHBET_SIZE
             end
         end
         changed_string += string_array[idx].chr
@@ -30,4 +36,8 @@ end
 test_string = "abcde fghij klmno pqrst uvwxy z"
 test_s = "The Magic OF BEing a MaN"
 caesar_cipher(test_s, 1)
+caesar_cipher(test_s, 13)
+
+caesar_cipher(test_string, 12)
+caesar_cipher(test_string, 19)
 #bcde fghij klmno pqrst uvwxy
