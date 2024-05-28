@@ -14,7 +14,7 @@ ALPAHBET_SIZE = 26
 
 # rubocop: disable Metrics/MethodLength
 # rubocop: disable Metrics/AbcSize
-def caesar_cipher(string_to_manipulate, cipher_shift)
+def show_caesar_cipher(string_to_manipulate, cipher_shift)
   changed_string = ''
   string_array = string_to_manipulate.bytes # create ASCII character code array
   string_array.each_with_index do |char_code, idx|
@@ -35,9 +35,9 @@ end
 
 test_string = 'abcde fghij klmno pqrst uvwxy z'
 test_s = 'The Magic OF BEing a MaN'
-caesar_cipher(test_s, 1)
-caesar_cipher(test_s, 13)
+show_caesar_cipher(test_s, 1)
+show_caesar_cipher(test_s, 13)
 
-caesar_cipher(test_string, 12)
-caesar_cipher(test_string, 19)
+show_caesar_cipher(test_string, 12)
+show_caesar_cipher(test_string, 19)
 # bcde fghij klmno pqrst uvwxy
