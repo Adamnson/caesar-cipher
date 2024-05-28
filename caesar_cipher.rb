@@ -4,6 +4,8 @@
 # step 2: add shift to all characters in this range -> should lead to overflow
 # step 3: loop back overflow with alphabet_size = 26
 
+# frozen_string_literal: false
+
 BIG_A_CODE = 65
 BIG_Z_CODE = 90
 SMALL_A_CODE = 97
