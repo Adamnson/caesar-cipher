@@ -17,3 +17,6 @@ Style/StringLiterals:
 
 Style/FrozenStringLiteralComment:
   EnforcedStyle: never
+
+Metric/MethodLength:
+  Max: 15
