@@ -11,7 +11,6 @@ ALPAHBET_SIZE = 26
 def show_caesar_cipher(string_to_manipulate, cipher_shift)
   return nil if cipher_shift.negative?
 
-  changed_string = ""
   string_array = string_to_manipulate.bytes # create ASCII character code array
   string_array.each_with_index do |char_code, idx|
     shift = lambda { |a_code, z_code|
@@ -22,9 +21,8 @@ def show_caesar_cipher(string_to_manipulate, cipher_shift)
     }
     shift.call(SMALL_A_CODE, SMALL_Z_CODE)
     shift.call(BIG_A_CODE, BIG_Z_CODE)
-    changed_string += string_array[idx].chr
   end
-  changed_string
+  string_array.map!(&:chr).inject(:+)
 end
 
 # test_string = "abcde fghij klmno pqrst uvwxy z"
