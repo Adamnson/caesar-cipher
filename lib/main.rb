@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 # step 1 : identify the characters that lie between [a-z] => [97,122] and [A-Z] => [65,90]
 # step 2: add shift to all characters in this range -> should lead to overflow
 # step 3: loop back overflow with alphabet_size = 26
@@ -11,6 +9,8 @@ SMALL_Z_CODE = 122
 ALPAHBET_SIZE = 26
 
 def show_caesar_cipher(string_to_manipulate, cipher_shift)
+  return nil if cipher_shift.negative?
+
   changed_string = ""
   string_array = string_to_manipulate.bytes # create ASCII character code array
   string_array.each_with_index do |char_code, idx|
