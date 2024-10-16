@@ -14,14 +14,14 @@ def show_caesar_cipher(string_to_manipulate, cipher_shift)
   changed_string = ""
   string_array = string_to_manipulate.bytes # create ASCII character code array
   string_array.each_with_index do |char_code, idx|
-    if (SMALL_A_CODE..SMALL_Z_CODE).include?(char_code)
-      string_array[idx] += cipher_shift
-      string_array[idx] -= ALPAHBET_SIZE if char_code >= SMALL_Z_CODE + 1 - cipher_shift
-    end
-    if (BIG_A_CODE..BIG_Z_CODE).include?(char_code)
-      string_array[idx] += cipher_shift
-      string_array[idx] -= ALPAHBET_SIZE if char_code >= BIG_Z_CODE + 1 - cipher_shift
-    end
+    shift = lambda { |a_code, z_code|
+      if (a_code..z_code).include?(char_code)
+        string_array[idx] += cipher_shift
+        string_array[idx] -= ALPAHBET_SIZE if char_code >= z_code + 1 - cipher_shift
+      end
+    }
+    shift.call(SMALL_A_CODE, SMALL_Z_CODE)
+    shift.call(BIG_A_CODE, BIG_Z_CODE)
     changed_string += string_array[idx].chr
   end
   changed_string
