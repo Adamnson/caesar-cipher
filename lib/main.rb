@@ -28,7 +28,7 @@ def show_caesar_cipher(string_to_manipulate, cipher_shift)
     end
     changed_string += string_array[idx].chr
   end
-  puts(string_to_manipulate, "\n", changed_string)
+  puts(string_to_manipulate, changed_string, "\n")
 end
 # rubocop: enable Metrics/MethodLength
 # rubocop: enable Metrics/AbcSize
